@@ -1,19 +1,20 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from '../pages/Home'
-import Estadisticas from '../pages/Estadisticas'
-import Producto from '../pages/Producto'
-import Inventario from '../pages/Inventario'
-import Carrito from '../pages/Carrito'
-const MyRoutes = () => {
-    return (
-        <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/productos' element={<Producto />} />
-            <Route path='/estadisticas' element={<Estadisticas />} />
-            <Route path='/inventario' element={<Inventario />} />
-            <Route path='/carrito' element={<Carrito />} />
-        </Routes>
-    )
-}
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-export default MyRoutes
+import { NavBar } from "../components/NavBar";
+import Producto from "../pages/Producto";
+import Inventario from "../pages/Inventario";
+import Carrito from "../pages/Carrito";
+import { Home } from "../pages/Home";
+export function MyRoutes() {
+  return (
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/productos" element={<Producto />} />
+        <Route exact path="/inventario" element={<Carrito />} />
+        <Route exact path="/carrito" element={<Carrito />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}

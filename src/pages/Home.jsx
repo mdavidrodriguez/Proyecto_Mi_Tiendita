@@ -1,15 +1,7 @@
-import styled from "styled-components"
 
-const Home = () => {
+export function Home(){
   return (
-    <Container>
 
         <h1>Home</h1>
-    </Container>
   )
 }
-const Container = styled.div`
-height: 100vh;
-`
-
-export default Home
