@@ -24,6 +24,12 @@ const Data = [
     cName: "nav-text",
   },
   {
+    title: "Movimientos",
+    path: "/movimientos",
+    icon: <IoIcons.IoIosPaper />,
+    cName: "nav-text",
+  },
+  {
     title: "Inventario",
     path: "/inventario",
     icon: <FaIcons.FaCartPlus />,

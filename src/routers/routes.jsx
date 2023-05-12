@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import { UserAuth } from "../context/AuthContext";
 import Perfil from "../Pages/Perfil";
 import Protector from "../components/Protector";
+import { ContainerMovimientos } from "../components/Movimientos/ContainerMovimientos";
 
 export function MyRoutes() {
 
@@ -30,6 +31,7 @@ export function MyRoutes() {
         <Route path="/" element={<RequireAuth><Home /></RequireAuth>} />
         <Route path="/login" element={<Login />} />
         <Route path="/perfil" element={<Protector><Perfil /></Protector>} />
+        <Route path="/movimientos" element={<Protector><ContainerMovimientos /></Protector>} />
         <Route path="/productos" element={<Protector><Producto /></Protector> } />
         <Route path="/inventario" element={<Protector><Carrito /></Protector> } />
         {/* <Route path="/carrito" element={<Carrito />} /> */}
