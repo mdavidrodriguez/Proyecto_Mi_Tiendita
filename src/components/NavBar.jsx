@@ -4,7 +4,11 @@ import * as AiIcons from "react-icons/ai";
 import * as FaIcons from "react-icons/fa";
 import * as IoIcons from 'react-icons/io';
 import { useState } from "react";
+import { UserAuth } from "../context/AuthContext"
+
 import "./NavBar.css";
+
+
 const Data = [
   {
     title: "Home",
@@ -25,16 +29,20 @@ const Data = [
     icon: <FaIcons.FaCartPlus />,
     cName: "nav-text",
   },
-  {
-    title: "Salir",
-    path: "/salir",
-    icon: <FaIcons.FaSignInAlt />,
-    cName: "nav-text",
-  },
 ];
+
+
 export function NavBar() {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
+  const { user, logOut } = UserAuth()
+  const cerrarSesion = async () => {
+    try {
+      await logOut()
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div>
@@ -43,6 +51,7 @@ export function NavBar() {
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
+          
         </div>
 
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
@@ -51,6 +60,7 @@ export function NavBar() {
             <Link to="#" className="menu-bars">
               <AiIcons.AiOutlineClose/>
             </Link>
+           
           </li>
             
             {Data.map((item, index) => {
@@ -63,6 +73,7 @@ export function NavBar() {
                 </li>
               );
             })}
+              <button onClick={cerrarSesion} className="btn-salir"> <FaIcons.FaSignOutAlt /> Salir</button>
           </ul>
         </nav>
       </IconContext.Provider>

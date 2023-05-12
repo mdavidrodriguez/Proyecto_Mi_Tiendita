@@ -1,19 +1,39 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { NavBar } from "../components/NavBar";
 import Producto from "../pages/Producto";
-import Inventario from "../pages/Inventario";
 import Carrito from "../pages/Carrito";
-import { Home } from "../pages/Home";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import { UserAuth } from "../context/AuthContext";
+import Perfil from "../Pages/Perfil";
+import Protector from "../components/Protector";
+
 export function MyRoutes() {
+
+  
+  const { user } = UserAuth();
+
+  const RequireAuth = ({ children }) => {
+    return user ? (
+      <>
+        {children}
+      </>
+    ) : (
+      <Navigate to="/login" />
+    );
+  };
+
   return (
     <BrowserRouter>
-      <NavBar />
+      {user && <NavBar />}
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/productos" element={<Producto />} />
-        <Route exact path="/inventario" element={<Carrito />} />
-        <Route exact path="/carrito" element={<Carrito />} />
+        <Route path="/" element={<RequireAuth><Home /></RequireAuth>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/perfil" element={<Protector><Perfil /></Protector>} />
+        <Route path="/productos" element={<Protector><Producto /></Protector> } />
+        <Route path="/inventario" element={<Protector><Carrito /></Protector> } />
+        {/* <Route path="/carrito" element={<Carrito />} /> */}
+        
       </Routes>
     </BrowserRouter>
   );

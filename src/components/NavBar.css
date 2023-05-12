@@ -72,4 +72,21 @@
   span {
     margin-left: 16px;
   }
+.btn-salir{
+  margin-left: 25px;
+  padding: 10px;
+  padding-left: 10px;
+  text-align: start;
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  width: 84%;
+  border-radius: 7px;
+}
+.btn-salir:hover{
+  background-color: #1a83ff;
+
+}
   

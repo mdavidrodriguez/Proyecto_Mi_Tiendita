@@ -1,7 +1,28 @@
+import styled from "styled-components"
+import { UserAuth } from "../context/AuthContext"
+import { useEffect } from "react"
 
-export function Home(){
+
+const Home = () => {
+  const { user, logOut } = UserAuth()
+  const cerrarSesion = async () => {
+    try {
+      await logOut()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  // useEffect(() => {
+
+  // },[])
   return (
-
-        <h1>Home</h1>
+    <Container>
+      <h1>Bienvenido {user.displayName}</h1>
+      <button onClick={cerrarSesion}>Cerrar Sesion</button>
+    </Container>
   )
 }
+const Container = styled.div`
+`
+
+export default Home
