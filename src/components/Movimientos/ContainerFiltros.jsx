@@ -19,6 +19,7 @@ const ContainerFiltros = ({ data }) => {
   };
   const handlebusqueda = (event) => {
     setBusqueda(event.target.value);
+    console.log(event.target.value)
     // const results = Falta implementar el metodo con javascript para poder filtrar
   };
   //     const filtradoBusqueda = data.filter((item) =>

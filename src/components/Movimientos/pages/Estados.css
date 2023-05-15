@@ -1,0 +1,6 @@
+.encabezado{
+    background-color: gainsboro;
+}
+.nav-item:hover{
+    cursor: pointer;
+}

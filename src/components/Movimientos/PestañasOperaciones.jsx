@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-// import Ingresos from "./Ingresos";
-// import Egresos from "./Egresos";
-// import Cobrar from "./Cobrar";
-// import Pagar from "./Pagar";
+import Ingresos from "./pages/Ingresos";
+import Egresos from "./pages/Egresos";
+import PorCobrar from "./pages/PorCobrar";
+import PorPagar from "./pages/PorPagar";
 
 const PestañasOperaciones = () => {
   const [pestañaActiva, setPestañaActiva] = useState("ingresos");
@@ -16,7 +16,9 @@ const PestañasOperaciones = () => {
       <ul className="nav nav-tabs">
         <li className="nav-item">
           <a
-            className={`nav-link ${pestañaActiva === "ingresos" ? "active" : ""}`}
+            className={`nav-link ${
+              pestañaActiva === "ingresos" ? "active" : ""
+            }`}
             onClick={() => handleClick("ingresos")}
           >
             Ingresos
@@ -24,7 +26,9 @@ const PestañasOperaciones = () => {
         </li>
         <li className="nav-item">
           <a
-            className={`nav-link ${pestañaActiva === "egresos" ? "active" : ""}`}
+            className={`nav-link ${
+              pestañaActiva === "egresos" ? "active" : ""
+            }`}
             onClick={() => handleClick("egresos")}
           >
             Egresos
@@ -47,10 +51,10 @@ const PestañasOperaciones = () => {
           </a>
         </li>
       </ul>
-      {/* {pestañaActiva === "ingresos" ? <Ingresos /> : null}
+      {pestañaActiva === "ingresos" ? <Ingresos /> : null}
       {pestañaActiva === "egresos" ? <Egresos /> : null}
-      {pestañaActiva === "cobrar" ? <Cobrar /> : null}
-      {pestañaActiva === "pagar" ? <Pagar /> : null} */}
+      {pestañaActiva === "cobrar" ? <PorCobrar /> : null}
+      {pestañaActiva === "pagar" ? <PorPagar /> : null}
     </div>
   );
 };
