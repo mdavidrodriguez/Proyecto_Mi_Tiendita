@@ -4,3 +4,15 @@
 .nav-item:hover{
     cursor: pointer;
 }
+.left .modal-dialog {
+    position: absolute;
+    right: 0;
+    transform: translateX(0%);
+    width: 350px;
+  }
+.no-size{
+    resize: none;
+}
+.cursor-option{
+    cursor: pointer;
+}
