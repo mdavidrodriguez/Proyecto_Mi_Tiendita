@@ -1,4 +1,5 @@
 import { BsPatchMinusFill } from "react-icons/bs";
+import { FaRegMoneyBillAlt } from "react-icons/fa";
 import './Estados.css'
 
 import { useState } from "react";
@@ -49,9 +50,9 @@ function ModalGastos() {
       >
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header">
+            <div className="modal-header borders">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Nuevo Gasto
+              <FaRegMoneyBillAlt className="icons-gasto" />   Nuevo Gasto
               </h1>
               <button
                 type="button"

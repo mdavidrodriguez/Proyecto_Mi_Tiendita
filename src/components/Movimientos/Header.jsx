@@ -2,12 +2,12 @@ import { BsPlusCircleFill, BsPatchMinusFill } from "react-icons/bs";
 import ModalGastos from "./pages/ModalGastos";
 import { useState } from "react";
 const Header = () => {
-  const [showModal, setshowModal] = useState(false)
+  // const [showModal, setshowModal] = useState(false)
 
-  const handleModalGasto = () => {
-    setshowModal(!showModal)
+  // const handleModalGasto = () => {
+  //   setshowModal(!showModal)
     
-  }
+  // }
   return (
     
       <div className="d-flex justify-content-between align-items-center m-3 border-bottom ">

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { AiOutlineFilter } from "react-icons/ai";
+import { FaRegMoneyBillAlt,FaChartBar } from "react-icons/fa";
+import './containerFiltros.css'
 
 const ContainerFiltros = ({ data }) => {
   const [selectitem, setSelectItem] = useState("Semanal");
@@ -125,7 +127,7 @@ const ContainerFiltros = ({ data }) => {
             <div className="col text-center">
               <div className="card">
                 <div className="card-body">
-                  <h5 className="card-title">Balance:</h5>
+                  <h5 className="card-title"><FaChartBar className="icons-ventas"/> Balance</h5>
                   <h6 className="card-subtitle mb-2 text-muted">
                     $ <span>  </span>
                   </h6>
@@ -135,7 +137,7 @@ const ContainerFiltros = ({ data }) => {
             <div className="col text-center">
               <div className="card">    
                 <div className="card-body">
-                  <h5 className="card-title">Ventas totales:</h5>
+                  <h5 className="card-title"> <FaRegMoneyBillAlt className="icons-ventas"/> Ventas totales</h5>
                   <h6 className="card-subtitle mb-2 text-muted">
                     $ <span></span>
                   </h6>
@@ -145,7 +147,7 @@ const ContainerFiltros = ({ data }) => {
             <div className="col text-center">
               <div className="card">
                 <div className="card-body">
-                  <h5 className="card-title">Gastos:</h5>
+                  <h5 className="card-title"> <FaRegMoneyBillAlt  className="icons-gasto"/> Gastos</h5>
                   <h6 className="card-subtitle mb-2 text-muted">
                     $ <span></span>
                   </h6>
