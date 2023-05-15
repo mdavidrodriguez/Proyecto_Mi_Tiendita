@@ -10,7 +10,7 @@ function Ingresos() {
     <div className="container">
       <h5>Estas en Ingresos</h5>
 
-      <table class="table table-hover">
+      <table className="table table-hover">
         <thead className='encabezado'>
           <tr>
             <th scope="col">Concepto</th>
