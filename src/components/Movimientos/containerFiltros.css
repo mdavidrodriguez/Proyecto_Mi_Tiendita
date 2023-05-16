@@ -12,3 +12,21 @@
     background-color: rgb(128, 209, 148);
     border-radius: 8px;
 }
+.caja-libre{
+    border:none;
+    background-color: #fff;
+    width: 320px;
+    
+}
+.tex-caja{
+    font-size: 12px;
+    margin-left: 5px;
+}
+.dropdown-menu{
+    position: absolute;
+    left: -160px !important;
+}
+.dropdown-item{
+    height: 80px !important;
+    cursor: pointer;
+}

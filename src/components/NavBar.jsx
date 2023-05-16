@@ -18,8 +18,8 @@ const Data = [
   },
 
   {
-    title: "Productos",
-    path: "/productos",
+    title: "Inventario",
+    path: "/inventario",
     icon: <IoIcons.IoIosPaper />,
     cName: "nav-text",
   },
@@ -30,7 +30,7 @@ const Data = [
     cName: "nav-text",
   },
   {
-    title: "Inventario",
+    title: "Surte tu Inventario",
     path: "/inventario",
     icon: <FaIcons.FaCartPlus />,
     cName: "nav-text",

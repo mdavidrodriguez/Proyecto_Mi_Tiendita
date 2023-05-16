@@ -1,0 +1,15 @@
+.card-canasta{
+height: 38rem;
+position: absolute;
+right: 0;
+overflow-y: scroll;
+}
+.card-producto{
+    width: 200px;
+}
+.contenedor-productos{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
