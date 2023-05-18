@@ -9,7 +9,15 @@ import Perfil from "../Pages/Perfil";
 import Protector from "../components/Protector";
 import { ContainerMovimientos } from "../components/Movimientos/ContainerMovimientos";
 
+import {LoginFire} from '../components/Login/LoginAuth/LoginFire'
+import { Signup } from "../components/Login/Signup/Signup";
+// import { Auth } from "firebase/auth";
+
+
 export function MyRoutes() {
+
+
+
 
   
   const { user } = UserAuth();
@@ -36,6 +44,7 @@ export function MyRoutes() {
         <Route path="/inventario" element={<Protector><Carrito /></Protector> } />
         {/* <Route path="/carrito" element={<Carrito />} /> */}
         
+        <Route exact path="/signup" element={<Signup/> }/>
       </Routes>
     </BrowserRouter>
   );

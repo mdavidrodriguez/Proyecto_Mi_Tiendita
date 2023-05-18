@@ -14,22 +14,22 @@ const Header = () => {
       <div className="d-flex justify-content-between align-items-center m-3 border-bottom ">
         <h3 className="ml-3">Movimientos</h3>
         <div className="d-flex justify-content-end">
-          <div class="dropdown d-flex justify-content-end">
-            <button class="btn btn-success mr-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <div className="dropdown d-flex justify-content-end">
+            <button className="btn btn-success mr-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <BsPlusCircleFill className="inline-block" /> Nueva Venta
             </button>
-            <ul class="dropdown-menu">
+            <ul className="dropdown-menu">
               <div className="caja-libre">
                 <li>
-                  <button class="dropdown-item" href="#"><BsBasketFill/> Venta de Productos <br />
-                    <label className="tex-caja" htmlFor="">Registra un venta seleccionando los productos <br /> de tu Inventario</label>
+                  <button className="dropdown-item" href="#"><BsBasketFill/> Venta de Productos <br />
+                    <label className="tex-caja">Registra un venta seleccionando los productos <br /> de tu Inventario</label>
                   </button>
                 </li>
               </div>
               <div className="caja-libre">
                 <li>
-                  <button class="dropdown-item" href="#"> <BsCashCoin /> Venta Libre <br />
-                  <label className="tex-caja" htmlFor="">Registra un ingreso sin seleccionar productos  <br /> de tu inventario</label>
+                  <button className="dropdown-item" href="#"> <BsCashCoin /> Venta Libre <br />
+                  <label className="tex-caja">Registra un ingreso sin seleccionar productos  <br /> de tu inventario</label>
                 </button>
                 </li>
               </div>

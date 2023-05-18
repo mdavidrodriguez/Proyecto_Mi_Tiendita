@@ -1,187 +1,103 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import astronauta from "../assets/Logo.jpg";
 import logogoogle from "../assets/logoogle.png";
-import { useNavigate } from 'react-router-dom';
 import { UserAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
 
+import styles from "../components/Login/LoginAuth/Login.module.css";
+import { InputControl } from "../components/Login/InputControl/InputControl";
+import { Link, useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../api/firebase.config";
 
 const Login = () => {
-  const navigate = useNavigate()
-  const {user,googleSignIn } = UserAuth()
+  const navigate = useNavigate();
+  const { user, googleSignIn } = UserAuth();
   const iniciarSesion = async () => {
     try {
       await googleSignIn();
-
     } catch (error) {
       console.log(error);
-
     }
-  }
+  };
 
   useEffect(() => {
     if (user != null) {
-      navigate('/')
+      navigate("/");
     }
-  }, [user])
+  }, [user]);
 
+  const [values, setValues] = useState({ email: "", pass: "" });
+  const [errorMsg, setErrorMsg] = useState([]);
+  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
+  const Loguearse = () => {
+    if (!values.email || !values.pass) {
+      setErrorMsg("Datos incompletos");
+      return;
+    }
+    setErrorMsg("");
+    setSubmitButtonDisabled(true);
+    signInWithEmailAndPassword(auth, values.email, values.pass)
+      .then(async (res) => {
+        setSubmitButtonDisabled(false);
+        navigate("/");
+      })
+      .catch((err) => {
+        setSubmitButtonDisabled(false);
+        setErrorMsg(err.message);
+      });
+  };
 
-  // const navigate = useNavigate();
-  // const { user, googleSignIn } = UserAuth();
-  // const iniciarSesion = async () => {
-  //   try {
-  //     await googleSignIn();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-  // useEffect(() => {
-  //   if (user != null) {
-  //     navigate("/")
-  //   }
-  // }, [user])
   return (
-    <Container>
-      <section className="imgseccion">
-        <h1>Mi Tiendita</h1>
-        <div className="fondocontent">
-          <img src={astronauta} />
-        </div>
-        <h4>Tu negocio a la mano y en todos tus dispositivos.</h4>
-      </section>
-      <section className="panelsesion">
-        <h2>Iniciar sesión</h2>
+    <div className="d-flex">
+      <div className={styles.container}>
 
-        <button onClick={iniciarSesion} className="btniniciar">
-          <img src={logogoogle} />
-          <span> Iniciar con Gmail</span>
-        </button>
-      </section>
-    </Container>
-  )
-}
+        <div className={styles.innerBox}>
+          <h1 className={styles.heading}>Login</h1>
+          <InputControl
+            label="Email"
+            onChange={(event) =>
+              setValues((prev) => ({ ...prev, email: event.target.value }))
+            }
+            placeholder="Ingrese su correo"
+          />
+          <InputControl
+            label="Contraseña"
+            onChange={(event) =>
+              setValues((prev) => ({ ...prev, pass: event.target.value }))
+            }
+            placeholder="Ingrese su Contraseña"
+            type="password"
+          />
+          <div className={styles.footer}>
+            <b className={styles.error}>{errorMsg}</b>
+            <button onClick={Loguearse} disabled={submitButtonDisabled}>
+              Login
+            </button>
+            <p>
+              ¿No tienes Cuenta?
+              <span>
+                <Link to="/signup">Registrate</Link>
+              </span>
+            </p>
+            <Container>
+              <button onClick={iniciarSesion} className="btniniciar">
+                <img src={logogoogle} />
+                <span> Iniciar con Gmail</span>
+              </button>
+            </Container>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 30px;
-  background: radial-gradient(#fedd58, #ff4139);
-  flex-direction: column-reverse;
-  width: 100vw;
-  .imgseccion {
-    background-color: #fff;
-    border-radius: 15px;
-    padding: 20px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    gap: 35px;
-    margin-top: 20px;
-    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.12);
-    h1 {
-      font-size: 35px;
-      font-weight: 650;
-    }
-    h4 {
-      color: #aaaaaa;
-    }
-    .fondocontent {
-      display: flex;
-      justify-content: center;
-      img {
-        width: 50%;
-        -webkit-animation: flotar 3s ease-in-out infinite;
-        animation: flotar 3s ease-in-out infinite;
-      }
-    }
-  }
-  .panelsesion {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    h2 {
-      color: white;
-      text-align: center;
-      font-weight: 600;
-      font-size: 52px;
-    }
-    .btniniciar {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-style: none;
-      img {
-        width: 30px;
-      }
-      background-color: white;
-      padding: 15px 30px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 22px;
-      transition: all 0.25s ease;
-      box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.12);
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0px 20px 40px 0px rgb(0 0 0 / 10%);
-        cursor: pointer;
-      }
-      span {
-        opacity: 0.8;
-      }
-    }
-    .social {
-      gap: 20px;
-      display: flex;
-      justify-content: center;
-      align-content: space-between;
-      color: white;
-      font-size: 30px;
-      position: relative;
-      bottom: 0;
-      .icons:hover {
-        transform: translateY(10px);
-        transition: all 0.5s;
-      }
-    }
-  }
-  @media (min-width: 64em) {
-    flex-direction: row;
-    .imgseccion {
-      margin-top: 0;
-      width: 50%;
-    }
-    .panelsesion {
-      width: 50%;
-    }
-  }
-  @media (max-width: 48em) {
-    .imgseccion {
-      .fondocontent {
-        img {
-          /* width: 80%; */
-        }
-      }
-    }
-  }
-  @keyframes flotar {
-    0% {
-      transform: translate(0, 0);
-    }
-    50% {
-      transform: translate(0, 20px);
-    }
-    100% {
-      transform: translate(0, 0px);
+  .btniniciar {
+    img {
+      width: 30px;
     }
   }
 `;
-export default Login
+export default Login;
