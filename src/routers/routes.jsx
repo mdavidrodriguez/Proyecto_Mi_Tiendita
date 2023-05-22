@@ -11,6 +11,7 @@ import { ContainerMovimientos } from "../components/Movimientos/ContainerMovimie
 
 import {LoginFire} from '../components/Login/LoginAuth/LoginFire'
 import { Signup } from "../components/Login/Signup/Signup";
+import NuevaVenta from '../components/Movimientos/pages/NuevaVenta'
 // import { Auth } from "firebase/auth";
 
 
@@ -42,6 +43,7 @@ export function MyRoutes() {
         <Route path="/movimientos" element={<Protector><ContainerMovimientos /></Protector>} />
         <Route path="/productos" element={<Protector><Producto /></Protector> } />
         <Route path="/inventario" element={<Protector><Carrito /></Protector> } />
+        <Route path="/nuevaventa" element={<Protector><NuevaVenta /></Protector> } />
         {/* <Route path="/carrito" element={<Carrito />} /> */}
         
         <Route exact path="/signup" element={<Signup/> }/>

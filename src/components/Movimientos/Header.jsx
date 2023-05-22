@@ -2,6 +2,8 @@ import { BsPlusCircleFill, BsBasketFill,BsCashCoin } from "react-icons/bs";
 import ModalGastos from "./pages/ModalGastos";
 import { useState } from "react";
 import './containerFiltros.css'
+import { Link, useNavigate } from "react-router-dom";
+
 const Header = () => {
   // const [showModal, setshowModal] = useState(false)
 
@@ -21,9 +23,19 @@ const Header = () => {
             <ul className="dropdown-menu">
               <div className="caja-libre">
                 <li>
-                  <button className="dropdown-item" href="#"><BsBasketFill/> Venta de Productos <br />
-                    <label className="tex-caja">Registra un venta seleccionando los productos <br /> de tu Inventario</label>
-                  </button>
+                <button className="dropdown-item">
+                  <Link to="/nuevaventa"
+                  
+                  style={{
+                    textDecoration:"none",
+                    color: "black"
+                  }}>
+                    <BsBasketFill/> Venta de Productos <br />
+                    <label className="tex-caja">
+                      Registra una venta seleccionando los productos <br /> de tu Inventario
+                    </label>
+                  </Link>
+                </button>
                 </li>
               </div>
               <div className="caja-libre">
